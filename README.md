@@ -1,4 +1,8 @@
 # Portafolio
+
+Pasos para el merge: Cuando la BD cambia hay que ejecutar --py manage.py migrate --py manage.py makemigrations --py manage.py createsuperuser
+
+
 Pawcare, proyecto Web para Portafolio 
 
 Usuarios
