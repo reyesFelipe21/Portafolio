@@ -1,0 +1,11 @@
+.disponible {
+    background-color: #06bee1;
+  }
+  
+.reservado {
+    background-color: #ff7d00;
+  }
+  
+.realizado {
+    background-color: #5ba832;
+}

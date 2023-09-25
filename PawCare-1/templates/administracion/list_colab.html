@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+{% load static %}
+
+<link href="{% static 'css/global.css' %}" type="text/css" rel="stylesheet">
+
+{% comment %} para menu de administracion
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div> {% endcomment %}
+
+  
+<br>
+<div class="container">
+    <h2 class="titulo">Lista de Colaboradores</h2><br><br>
+
+  
+    <a href="{% url 'admin_app:crear_colaborador' %}" class="btn btn-primary btn-info btn-info-hover">Agregar Colaborador</a> <br>
+    <table class="table"> <br>
+        <thead>
+            <tr>
+                <th>Nombre del Patrocinador</th>
+                <th>Descipccion</th>
+                <th>Codigo de descuento</th>
+                <th>Link de Patrocinador</th>
+                <th>Ingreso</th>
+                <th>Se encuentra Publicado</th> 
+                
+                <th>Foto de la marca</th>
+  
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in lista_colaboradores %}
+            <tr>
+                <td>{{c.title}}</td>
+                <td>{{c.content}}</td>
+                <td>{{c.descuento}}</td>
+                <td>{{c.url}}</td>
+                <td>{{c.created}}</td>
+                <td>{{c.published}}</td>
+                <td>
+                  {% if c.image %}
+                  <img class="imagen-colab" src="{{c.image.url}}" width="100px" height="100px" alt="">
+                  {% endif %}
+                </td>
+                <td><a href="{% url 'admin_app:colaborador_modificar' c.id %}" class="btn btn-primary  btn-info btn-info-hover">Modificar</a></td>
+                {% comment %} <td><a href="#" class="btn btn-danger">Eliminar</a></td> {% endcomment %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+  </div><br><br>
+
+  
+ 
+
+
+{% endblock %}
+
+
+

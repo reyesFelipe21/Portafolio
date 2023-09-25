@@ -1,0 +1,53 @@
+.Sub1{
+  color:#ff7d00 ;
+  text-indent: 50px;
+  font-size: 50px;
+  font-family: 'Roboto', sans-serif;
+}
+
+hr{
+    border: solid 2px black;
+}
+.grid-container {
+    display: grid;
+    column-gap: 50px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+  }
+  
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+   
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .grid-container2 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 500px 500px;
+    padding: 10px;
+  }
+  .grid-item2 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);   
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .titulo-home{
+    font-size: 30px;
+    font-family:'Roboto', sans-serif;
+  }
+
+  .texto{
+    font-size: 18px;
+    font-family:'Roboto', sans-serif;
+  }
+
+  .imagen-carta{
+    width: 350px;
+    height: 250px;
+  }

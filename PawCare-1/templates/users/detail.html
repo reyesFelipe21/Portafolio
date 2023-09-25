@@ -1,0 +1,194 @@
+
+{% extends 'base.html' %}
+
+{% block content %} 
+
+{% load static %}
+<link href="{% static 'css/global.css' %}" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/rating.css' %}">
+
+<section style ="background-color: #fff;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-3">
+            <div class="card-body text-center">
+              <img src="{{ profile.picture.url}}" 
+                class="rounded-circle img-fluid">
+              <h5 class="my-3">{{profile.user.nombres}} </h5>
+              </a>
+              <div class="d-flex justify-content-center mb-2">
+                <a class="nav-link"  href="#">
+                    <a class="btn btn-info float-end" href="{% url 'users:update' profile.id %}">Editar</a>
+               
+                </a>
+                <br>
+                {%if request.user.categoria == '1' %}
+<!--                 <a class="nav-link"  href="#">
+                  <a class="btn btn-info float-end" href="{% url 'users:mascota'  %}">Mascotas</a>
+               </a>   -->
+               {% endif %}
+
+               <div>
+                <!--  <a href="nav-link" href="#">
+                    <a class="btn btn-info float-end" value="4" id="open-rating-modal" href="" onclick="abrir_modal_ratings('{% url 'users_app:rating_modal'%}')">Modal</a
+                  </a>-->
+
+                
+               </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nombre de usuario:</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.user.username}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nombre completo:</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.user.nombres}} {{profile.user.apellidos}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Rut:</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.user.rut}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Correo electronico</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.user.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Telefono</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.user.telefono}}</p>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Ciudad</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.user.region}}</p>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Direccion</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"> {{profile.user.comuna}}, {{profile.user.direccion}} </p>
+                </div>
+              </div>
+             <!--    <hr>
+           <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Ciudad</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.region}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Direccion</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.comuna}},{{profile.direccion}}</p>
+                </div>
+              </div> -->
+              
+              
+
+
+              {%if user.is_authenticated and profile.user %}
+              {%if request.user.categoria == '2' %}
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Tipos de servicios:</p>
+                </div>
+              </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">
+                    {% for servicios in user.profile.servicios.all %}
+                    <span class="badge bg-primary">{{ servicios.nombre  | upper }}</span>
+                  {% endfor %} 
+                  </p>
+                  <br>
+              </div>
+              <div class="modal fade" id="seleccionar" rol="servicios">
+
+              </div>
+                  
+                  {%endif%}
+                  {%endif%}
+                  
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Descripcción</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user.profile.descripcion}}</p>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+                      </div>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="div_modal_rating"> 
+         
+        </div>
+        
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+
+  <script src="{% static 'js/rating.js' %}"></script>
+
+  
+
+{% endblock %}

@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+
+{% block content %} 
+
+{% load static %}
+
+<link href="{% static 'css/global.css' %}" type="text/css" rel="stylesheet">
+
+<style>
+    .bg{
+        background-image: url("{% static 'img/fotoparaloginn.jpg' %} ");
+        background-position: center center;
+        width:100%;
+        alt:100%;
+        border-radius:5px;
+    }
+</style>
+
+<div class="container w-75 bg-primary mt-5 rounded shadow">
+    <div class="row align-item-stretch">
+        <div class="col bg d-none d-lg-block rounded">
+        </div>
+
+        
+        <div class="col bg-white p-5 rounded-end">
+            <div class="text-end">
+                <img src="{% static 'img/logoup.png' %}" width="78" alt="" >
+            </div>
+            <h2 class="fw-bold text-center pt5 mb-5">Bienvenido</h2>
+
+            <form action="#" method="POST">
+                {% csrf_token %}
+
+                <input type="hidden" value="{{id}}" id="id_usuario">
+                {{ form.as_p }}
+              <!--  <div class="mb-4">
+                    <div class="cell medium-12">
+                        <label>Nombre de usuario:</label>
+                        <div class="input-group">
+                          <span class="input-group-label"><i class="fi-mail"></i></span>
+                          {{form.username}}
+                        </div>
+                      </div>
+                      <br>
+                      <div class="cell medium-12">
+                        <label>Password:</label>
+                        <div class="input-group">
+                          <span class="input-group-label"><i class="fi-lock"></i></span>
+                          {{form.password}}
+
+                        </div>
+                      </div> 
+
+                </div>-->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-info">Ingresar</button>
+                </div>
+                <br>
+                <a href="{% url 'users_app:password_reset' %}"> A olvidado su contraseña?</a>
+                <br>
+                <br>
+                <a href="{% url 'users_app:user_register' %}"> Aun no tienes una Cuenta, Registrate aqui.</a>
+                   
+                <div class="mb-4"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+                 
+
+{% endblock %}
